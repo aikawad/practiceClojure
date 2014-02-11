@@ -162,8 +162,8 @@
 (defrecord SimpleCompass [bearing]
   Compass
 (direction [_] (directions bearing))
-(left [_] (SimCompass. (turn bearing 3)))
-(right [_] (SimCompass. (turn bearing 1)))
+(left [_] (SimpleCompass. (turn bearing 3)))
+(right [_] (SimpleCompass. (turn bearing 1)))
   Object
   (toString [this] (str "[" (direction this) "]")) )
 
@@ -173,3 +173,6 @@
 (:bearing c)
 
 ; 7.3.5 宏 Macro
+
+
+
