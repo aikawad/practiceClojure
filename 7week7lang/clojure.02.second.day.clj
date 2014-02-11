@@ -75,3 +75,44 @@
 (sort-by abs [-1 -4 3 2])
 
 ; 7.3.3 延遲計算
+
+; 1. 用range創建有窮序列
+
+; hint 上限不在區間內
+(range 1 10)
+
+; with step "3"
+(range 1 10 3)
+
+
+(range 20)
+; 可省略下限,  0 是 default 下限
+ (range  -20 -10)
+ (range  -10 -20)
+ (range  -10 -20 -1)
+ ; default setp 是 +1
+
+; 2. 無窮序列和 take
+
+; 使用時,拿掉 註解
+; (repeat 1)
+
+; (repeat "Use the force, Luke.")
+
+(take 3 (repeat "Use the force, Luke.") )
+
+(take 5 (cycle [:lather :rinse :repeat] ))
+
+(take 5 (drop 2 (cycle [:lather :rinse :repeat] )))
+
+; interleave 操作
+
+(take 20 (interleave (cycle (range 2)) (cycle (range 3))))
+(take 20 (interleave ; 用不同的數字比較容易理解
+          (cycle (range 7 9))
+          (cycle (range 1 4))))
+
+(take 20 (interleave ;另外加的  變成第次跟三組range要資料
+          (cycle (range 7 9))
+          (cycle (range 5 7))
+          (cycle (range 1 4))))
