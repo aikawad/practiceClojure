@@ -134,8 +134,8 @@
         (iterate fib-pair [1 1])))
 (nth
       ( map first
-        (iterate fib-pair [1 1])) 80)
-        ; (iterate fib-pair [1 1])) 500) ; 500太大，改80
+        (iterate fib-pair [1 1])) 90)
+        ; (iterate fib-pair [1 1])) 500) ; 500太大，改90
 
 ; 階乘
 (defn factorial [n] (apply * (take n (iterate inc 1))))
@@ -164,15 +164,44 @@
 (direction [_] (directions bearing))
 (left [_] (SimpleCompass. (turn bearing 3)))
 (right [_] (SimpleCompass. (turn bearing 1)))
-  Object
-  (toString [this] (str "[" (direction this) "]")) )
+Object
+(toString [this] (str "[" (direction this) "]")))
 
 (def c (SimpleCompass. 0))
 (left c)
-      c
+c
 (:bearing c)
-
 ; 7.3.5 宏 Macro
+
+; 壞掉的unless
+(defn unless [test body] (if (not test) body))
+(unless true (println "Danger, danger Will Robinson"))
+
+(macroexpand ''something-we-do-not-want-interpreted)
+(macroexpand '#(count %))
+(fn* [p1__97] (count p1__97))
+
+(defmacro unless [test body]
+  (list 'if (list 'not test) body))
+
+(macroexpand '(unless condition body))
+
+(unless true (println "No more danger, Will."))
+
+(unless false (println "Now,THIS is The FORCE"))
+
+; 7.3.7 第二天自習
+
+; 找
+; -------------
+; q1. Clojure 中一些常用宏的實現。
+; q2. 一個自定義延遲序列的例子。
+; q3. defrecord 和 protocol 目前的狀態。(在編寫本書時，這些特性還在開發中。)
+
+; 做
+; -------------
+; q1. 用宏實現一個飽含else條件的unless。
+; q2. 編寫一個類型用 defrecord實現一個協議。
 
 
 
