@@ -116,3 +116,60 @@
           (cycle (range 7 9))
           (cycle (range 5 7))
           (cycle (range 1 4))))
+
+; interleave 另一種操作
+
+(take 5 (iterate inc 1))
+(take 5 (iterate dec 0))
+
+; 費伯納係數
+(defn fib-pair [[a b]][b (+ a b)])
+(fib-pair [3 5])
+
+; 太多了 ,執行時在解開註解
+; (iterate fib-pair [1 1])
+
+(take 5
+      ( map first
+        (iterate fib-pair [1 1])))
+(nth
+      ( map first
+        (iterate fib-pair [1 1])) 80)
+        ; (iterate fib-pair [1 1])) 500) ; 500太大，改80
+
+; 階乘
+(defn factorial [n] (apply * (take n (iterate inc 1))))
+(factorial 5)
+
+; 7.3.4 defrecord 和 protocol
+
+; 定義Clojure協議
+(defprotocol Compass
+  (direction [c])
+  (left [c])
+  (right [c]))
+
+(def directions [:north :east :south :west])
+
+(defn turn
+  [base amount]
+  (rem (+ base amount) (count directions)))
+
+(turn 1 1)
+(turn 3 1)
+(turn 2 3)
+
+(defrecord SimpleCompass [bearing]
+  Compass
+(direction [_] (directions bearing))
+(left [_] (SimCompass. (turn bearing 3)))
+(right [_] (SimCompass. (turn bearing 1)))
+  Object
+  (toString [this] (str "[" (direction this) "]")) )
+
+(def c (SimpleCompass. 0))
+(left c)
+      c
+(:bearing c)
+
+; 7.3.5 宏 Macro
