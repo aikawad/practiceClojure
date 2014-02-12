@@ -5,8 +5,11 @@ Clojure 語言練習
 ----------
 #工具
  OS: 我的環境是在windows上
- IDE: A. light table 。 支援REPL 
-      B. 用Command line 跑REPL
+ 
+ IDE:  A. light table 。 支援REPL
+ 
+       B. 用Command line 跑REPL
+      
 ----------
 #日誌
 
