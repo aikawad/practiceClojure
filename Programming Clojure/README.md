@@ -1,9 +1,7 @@
 Programming Clojure
 ===
 
-
 ##Table of Content ###
-
 
 - Getting Started
 - Exploring Clojure
@@ -26,6 +24,7 @@ Programming Clojure
 
 ---
 #####  Exploring Clojure
+
 - Forms
 - REader Macros
 - Functins
@@ -35,6 +34,7 @@ Programming Clojure
 - Where's My for Loop?
 - Metadata
 - Wrapping Up
+
 ---
 ##### Unifying Data with Sequences
 - Everything Is a Sequence
